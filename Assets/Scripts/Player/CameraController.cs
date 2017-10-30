@@ -4,6 +4,9 @@
 public class CameraController : MonoBehaviour{
 
     public float sensitivity;
+    public float minY, maxY;
+
+    private Vector2 mouseLook;
     
     private GameObject _character;
 
@@ -14,10 +17,10 @@ public class CameraController : MonoBehaviour{
 
     public void Update () {
         Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * sensitivity;
-        transform.localRotation *= Quaternion.AngleAxis(-mouseMovement.y, Vector3.right);
+        mouseLook += mouseMovement;
+        mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
+        //transform.localRotation *= Quaternion.AngleAxis(-movementY, Vector3.right);
+        transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         _character.transform.localRotation *= Quaternion.AngleAxis(mouseMovement.x, _character.transform.up);
-
-        //Weapon weapon = _character.GetComponentInChildren<Weapon>();
-        //weapon.transform.localRotation *= Quaternion.AngleAxis(-mouseMovement.y, Vector3.right);
     }
 }

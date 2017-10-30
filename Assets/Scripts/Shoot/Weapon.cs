@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
+/*
+ * Weapon
+ */
+
 public class Weapon : MonoBehaviour
 {
     
     public int damage;
     public float fireRate;
-    public float range;
+    public Transform gunEnd;
     
 
     private float _nextFire;
@@ -39,5 +43,10 @@ public class Weapon : MonoBehaviour
     {
         _timerShoot = 0;
         _shootingType.Shoot();
+    }
+
+    public Transform getGunEnd()
+    {
+        return gunEnd;
     }
 }

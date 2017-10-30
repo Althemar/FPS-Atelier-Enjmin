@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * WeaponManager
+ * a weapons manager that can store multiple weapons and switch between them
+ */
+
 public class WeaponManager : MonoBehaviour
 {
     public GameObject originalWeapon;
@@ -26,34 +31,11 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    // Switch between two weapons
     private void ChangeWeapon(int weaponIndex)
     {
-        /*
-        Transform hands;
-        if (GetComponent<PlayerController>() != null) 
-        {
-            Transform camera;
-            for (int i = 0; i < transform.childCount - 1; i++)
-            {
-                if (transform.GetChild(i).GetComponent<CameraController>() != null)
-                {
-                    camera = transform.GetChild(i);
-                    hands = camera.GetChild(0);
-                }
-            }
-        }
-        else 
-        {
+        // TODO Remove the current weapon
 
-        }
-
-        */
-        /*
-        if (hands != null)
-        {
-            
-        }
-        */
         GameObject weapon = Instantiate(_weapons[weaponIndex], transform);
         _equipedWeapon = weapon.GetComponent<Weapon>();
 
