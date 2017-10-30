@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class WeaponManager : MonoBehaviour
 {
     public GameObject originalWeapon;
 
@@ -21,7 +20,7 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && _equipedWeapon != null && _equipedWeapon.CanShoot() )
+        if (Input.GetButton("Fire1") && _equipedWeapon != null && _equipedWeapon.CanShoot() )
         {
             _equipedWeapon.Shoot();
         }
@@ -29,10 +28,7 @@ public class Shoot : MonoBehaviour
 
     private void ChangeWeapon(int weaponIndex)
     {
-
-
-        
-
+        /*
         Transform hands;
         if (GetComponent<PlayerController>() != null) 
         {
@@ -42,6 +38,7 @@ public class Shoot : MonoBehaviour
                 if (transform.GetChild(i).GetComponent<CameraController>() != null)
                 {
                     camera = transform.GetChild(i);
+                    hands = camera.GetChild(0);
                 }
             }
         }
@@ -50,10 +47,15 @@ public class Shoot : MonoBehaviour
 
         }
 
-
-        
-        GameObject weapon = Instantiate(_weapons[weaponIndex], hands);
-        //weapon.transform.Rotate(new Vector3( cameraRotation, 0, 0));
+        */
+        /*
+        if (hands != null)
+        {
+            
+        }
+        */
+        GameObject weapon = Instantiate(_weapons[weaponIndex], transform);
         _equipedWeapon = weapon.GetComponent<Weapon>();
+
     }
 }
