@@ -19,7 +19,6 @@ public class CameraController : MonoBehaviour{
         Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * sensitivity;
         mouseLook += mouseMovement;
         mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
-        //transform.localRotation *= Quaternion.AngleAxis(-movementY, Vector3.right);
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         _character.transform.localRotation *= Quaternion.AngleAxis(mouseMovement.x, _character.transform.up);
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 /*
  * WeaponManager
- * a weapons manager that can store multiple weapons and switch between them
+ * A weapons manager that can store multiple weapons and switch between them.
  */
 
 public class WeaponManager : MonoBehaviour
@@ -29,6 +29,10 @@ public class WeaponManager : MonoBehaviour
         {
             _equipedWeapon.Shoot();
         }
+        else if (Input.GetButtonUp("Fire1") && _equipedWeapon.GetAttackType() == Weapon.AttackType.shootOnce)
+        {
+            _equipedWeapon.TriggerReleased();
+        } 
     }
 
     // Switch between two weapons

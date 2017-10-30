@@ -34,7 +34,7 @@ public class RayCastShoot : WeaponShoot
 
         Vector3 rayOrigin = getRaycastOrigin();
         
-        _laserLine.SetPosition(0, _weapon.getGunEnd().position);
+        _laserLine.SetPosition(0, _weapon.GetGunEnd().position);
         if (Physics.Raycast(rayOrigin, transform.forward, out _hit, range))
         {
             _laserLine.SetPosition(1, _hit.point);
