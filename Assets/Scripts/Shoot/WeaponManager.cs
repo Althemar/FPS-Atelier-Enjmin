@@ -9,9 +9,11 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public GameObject originalWeapon;
+    public int numberOfWeapons;
 
     private Weapon _equipedWeapon;
-    private List<GameObject> _weapons; 
+    private List<GameObject> _weapons;
+    private Transform _weaponPosition;
 
     private void Start()
     {
@@ -20,6 +22,21 @@ public class WeaponManager : MonoBehaviour
         {
             _weapons.Add(originalWeapon);
             ChangeWeapon(0);
+        }
+
+      
+        if (GetComponent<PlayerController>() != null)
+        {
+            Transform camera = FindHierarchy.FindChildWithComponent<Camera>(transform);
+
+            if (camera != null)
+            {
+                _weaponPosition = FindHierarchy.FindChildWithTag(camera, "WeaponPosition");
+            }
+        }
+        else
+        {
+            _weaponPosition = FindHierarchy.FindChildWithTag(transform, "WeaponPosition");
         }
     }
 
@@ -35,12 +52,29 @@ public class WeaponManager : MonoBehaviour
         } 
     }
 
-    // Switch between two weapons
-    private void ChangeWeapon(int weaponIndex)
+    public void AddNewWeapon(GameObject weapon)
     {
-        // TODO Remove the current weapon
+        if (_weapons.Count < numberOfWeapons)
+        {
+            _weapons.Add(weapon);
+        }
+    }
 
-        GameObject weapon = Instantiate(_weapons[weaponIndex], transform);
+    // Switch between two weapons
+    public void ChangeWeapon(int weaponIndex)
+    {
+        for (int i = 0; i < _weaponPosition.childCount; i++)
+        {
+            Destroy(_weaponPosition.GetChild(i));
+        }
+
+        GameObject weapon;
+        if (_weaponPosition != null)
+            weapon = Instantiate(_weapons[weaponIndex], _weaponPosition);
+        else
+        {
+            weapon = Instantiate(_weapons[weaponIndex], transform);
+        }
         _equipedWeapon = weapon.GetComponent<Weapon>();
 
     }

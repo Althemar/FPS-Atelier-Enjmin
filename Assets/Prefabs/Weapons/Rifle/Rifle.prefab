@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4463835003151998}
   - component: {fileID: 33389632883447246}
-  - component: {fileID: 65700480435113584}
   - component: {fileID: 23231115430840734}
   m_Layer: 0
   m_Name: Canon
@@ -71,7 +70,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4125209415893262}
   - component: {fileID: 33825229152964616}
-  - component: {fileID: 136786375528623064}
   - component: {fileID: 23927676580630566}
   m_Layer: 0
   m_Name: Viseur
@@ -89,7 +87,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4047063859234364}
   - component: {fileID: 33997945553762110}
-  - component: {fileID: 65120505967719652}
   - component: {fileID: 23639477823595034}
   m_Layer: 0
   m_Name: Cube
@@ -144,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242122274557174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.196, y: 2.55, z: 1.039}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4463835003151998}
@@ -290,30 +287,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803518007081630}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65120505967719652
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1803518007081630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65700480435113584
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1135552539220714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114069057880695686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,8 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf75d80b486854849b8911312bde59ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDuration: 0
-  range: 0
+  shotDuration: 0.07
+  range: 50
 --- !u!114 &114450669098456082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,9 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb00cd97b9bd674db7c05c57a1aa29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  fireRate: 2
-  gunEnd: {fileID: 1144626330082216}
+  attackType: 0
+  fireRate: 10
+  gunEnd: {fileID: 4047002111709202}
 --- !u!120 &120617840902759946
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -380,19 +353,19 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0.015544891
-        value: 0.78723335
+        time: 0
+        value: 0.4893589
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.98962957
-        value: 0.27659684
+        time: 1
+        value: 0.46808702
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -435,16 +408,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!136 &136786375528623064
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1329395339573096}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
